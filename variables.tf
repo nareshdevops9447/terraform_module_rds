@@ -39,8 +39,9 @@ variable "secret_name" {
 }
 
 variable "rds_tags" {
+    default = {}
 }
 
 variable "tags" {
-    
+
 }
