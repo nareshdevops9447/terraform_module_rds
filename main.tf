@@ -28,7 +28,7 @@ resource "random_password" "password" {
 
 # we will create the secret outside of terraform, but we store the value through terraform
 
-data "aws_secretsmanager_secret" "rds_secret" {
+data "aws_secretsmanager_secret" "rds_secret_arn" {
   arn = var.rds_secret_arn
 }
 
