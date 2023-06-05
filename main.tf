@@ -7,6 +7,7 @@ resource "aws_db_instance" "main" {
   instance_class       = var.instance_type
   username             = var.username
   db_subnet_group_name = var.db_subnet_group_name
+  #db_security_group_ids = var.db_security_group_ids
   password = random_password.password.result
   vpc_security_group_ids = var.vpc_security_group_ids
 }
