@@ -37,3 +37,10 @@ variable "vpc_security_group_ids" {
 variable "secret_name" {
 
 }
+
+variable "rds_tags" {
+}
+
+variable "tags" {
+    
+}

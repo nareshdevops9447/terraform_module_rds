@@ -10,6 +10,7 @@ resource "aws_db_instance" "main" {
   #db_security_group_ids = var.db_security_group_ids
   password = random_password.password.result
   vpc_security_group_ids = var.vpc_security_group_ids
+  tags = merge(var.tags, var.rds_tags)
 }
 
 resource "random_password" "password" {
@@ -22,13 +23,13 @@ resource "random_password" "password" {
 # store password in secret manager
 resource "aws_secretsmanager_secret" "rds" {
   name = var.secret_name
-  tags = var.tags
+  tags = merge(var.tags, var.rds_tags)
 }
 
 resource "aws_secretsmanager_secret_version" "rds" {
   secret_id     = aws_secretsmanager_secret.rds.id
   secret_string = random_password.password.result
-  tags = var.tags
+  
 }
 
 
